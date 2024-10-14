@@ -37,10 +37,10 @@ class EasyMarkdownDynamic extends BaseDynamic<EasyMarkdownDynamicField,EasyMarkd
     return 'easymde';
   }
 
-  handleChange = (e: Event, value: any)=>{
+  handleChange = useCallback((e: Event, value: any)=>{
     this.forceUpdate();
     this.props.context.setValue(e, 250);
-  }
+  }, [])
 
   renderComponent(){
 
