@@ -40,7 +40,7 @@ class SelectFromQueryDynamic extends BaseDynamic<SelectFromQueryDynamicField,Sel
     //TODO: clear if value is not a valid option
     let key = field.key;
     let isArrayType = field.multiple === true;
-    if(state[key]===undefined){
+    if(state[key]===undefined || state[key]===null){
       state[key] = field.default || isArrayType?[]:'';
     }
     else{
