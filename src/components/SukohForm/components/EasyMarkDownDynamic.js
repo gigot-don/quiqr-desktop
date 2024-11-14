@@ -19,10 +19,10 @@ type EasyMarkdownDynamicField = {
 type EasyMarkdownDynamicState = {
 
 }
-const autofocusNoSpellcheckerOptions = {
-  autofocus: false,
-  spellChecker: false,
-};
+const autofocusNoSpellcheckerOptions = useMemo(() => {
+    autofocus: false,
+    spellChecker: false,
+  };, []);
 
 class EasyMarkdownDynamic extends BaseDynamic<EasyMarkdownDynamicField,EasyMarkdownDynamicState> {
 
@@ -40,7 +40,7 @@ class EasyMarkdownDynamic extends BaseDynamic<EasyMarkdownDynamicField,EasyMarkd
   handleChange = useCallback((e: Event, value: any)=>{
     this.forceUpdate();
     this.props.context.setValue(e, 250);
-  }, [])
+  }, []);
 
   renderComponent(){
 
