@@ -4,6 +4,15 @@ import FormItemWrapper from './shared/FormItemWrapper';
 import FontPicker      from "font-picker-react";
 import Tip             from '../../Tip';
 
+function convertFontCaseReactToWeb(fontname, delimiter='-'){
+    // maps e.g. "FaPaperPlane" to "fa-paper-plane"
+    return fontname
+    .split(/([A-Z](?:[a-z]+|(?<=[a-z])$))/) // separate the camel case words with some care for edge cases (abbrev. like PDF, tailing capital letters...)
+    .filter(function(e){return e;}) // get rid of empty strings
+    .join(delimiter)
+    .toLowerCase();
+}
+
 class FontPickerDynamic extends BaseDynamic {
 
   getType(){
@@ -74,7 +83,7 @@ class FontPickerDynamic extends BaseDynamic {
               categories={field.categories}
 
               onChange={(nextFont) => {
-                this.props.context.setValue(nextFont.family)
+                this.props.context.setValue(convertFontCaseReactToWeb(nextFont.family))
                 if(field.autoSave === true){
                   context.saveFormHandler();
                 }
