@@ -22,7 +22,7 @@ type EasyMarkdownDynamicState = {
 const autofocusNoSpellcheckerOptions = useMemo(() => {
     autofocus: false,
     spellChecker: false,
-  };, []);
+  }, []);
 
 class EasyMarkdownDynamic extends BaseDynamic<EasyMarkdownDynamicField,EasyMarkdownDynamicState> {
 
